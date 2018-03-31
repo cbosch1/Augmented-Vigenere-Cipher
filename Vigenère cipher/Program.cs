@@ -74,7 +74,7 @@ namespace Vigenère_cipher
                 }
             }
 
-            //Loops
+            //Loops if invalid text entered
             while (
                 Question != ("encrypt") ||
                 Question != ("e") ||

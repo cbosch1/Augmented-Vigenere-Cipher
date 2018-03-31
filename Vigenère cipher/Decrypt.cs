@@ -8,15 +8,17 @@ namespace Vigenère_cipher
 {
     class Decrypt
     {
+        //Calls private decryption method
         static public string ProcessString(string a, string b)
         {
             string DecryptedString = processString(a, b);
             return DecryptedString;
         }
-
+        
+        //Decrypts based on inputed code word and phrase
         static private string processString(string w, string p)
         {
-            //Calls 2nd level decryption method
+            //Calls 2nd level decryption method with program code word "difficult"
             string extra = ("difficult");
             string decodedPhrase2 = processString2(extra, p);
 
@@ -45,7 +47,7 @@ namespace Vigenère_cipher
             {
                 int decodeInt;
 
-                //Picks out the next character
+                //Picks out character
                 char wordChar = wordArray[x];
                 char phraseChar = phraseArray[y];
 
@@ -72,13 +74,14 @@ namespace Vigenère_cipher
                 char decode = Grid[0][decodeInt];
                 decodedPhrase += ($"{decode}");
 
-                x++;
-                y++;
 
                 //Repeats code word through encrypted phrase
+                x++;
+                y++;
                 if (x == wordInt) { x = 0; }
             }
 
+            //Returns fully decoded phrase
             return decodedPhrase;
 
         }
@@ -99,7 +102,7 @@ namespace Vigenère_cipher
             int y = 0;
             string decodedPhrase = ("");
 
-            //Initialize Grid
+            //Initialize reverse code grid
             char[][] Grid = CipherGrid.Initialize2();
 
             //Finds encrypted character address
@@ -116,12 +119,14 @@ namespace Vigenère_cipher
                 //Adds character to phrase
                 decodedPhrase += ($"{decode}");
 
+
+                //Repeats code word through encrypted phrase
                 x++;
                 y++;
-                
-                //Repeats code word through encrypted phrase
                 if (x == wordInt) { x = 0; }
             }
+
+            //Returns encrypted phrase with program code word decrypted
             return decodedPhrase;
         }
 
